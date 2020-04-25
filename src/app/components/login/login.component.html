@@ -1,0 +1,42 @@
+<!--
+  ~ Copyright (C) 2020-2020 KevTech  - All Rights Reserved
+  ~  Unauthorized copying of this file, via any medium is strictly prohibited
+  ~  Proprietary and confidential
+  ~  Written by KevTech <admin@kevtech.ca>, 2020-03-13, 2:05 p.m.
+  ~
+  ~  File: auth.component.html
+  ~  Project: FarmingSmarterPWA
+  -->
+
+<div >
+  <mat-card class="loginCard">
+    <div style="text-align: center; margin-bottom: 1em">
+      <img src="../../../assets/photo/pixlogo.jpg" alt="PokeBall" style="height: 5em">
+    </div>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)=" login()">
+        <p>
+          <mat-form-field>
+            <input id="username" type="text" matInput required placeholder="Username"/>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input id="password" type="password" matInput required placeholder="Password"/>
+          </mat-form-field>
+        </p>
+
+        <p *ngIf="error" class="error" [innerHTML]="error">
+
+        </p>
+
+        <div class="button">
+          <button type="submit" mat-button>Login</button>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
