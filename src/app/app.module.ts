@@ -15,12 +15,21 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { BaseComponent } from './components/base/base.component';
+import {RouterModule} from '@angular/router';
+import {AppRoutingModule} from './app-routing.module';
+import {CookieService} from 'ngx-cookie-service';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    NavigationComponent,
+    BaseComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +44,13 @@ import {HttpClientModule} from '@angular/common/http';
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    RouterModule,
+    AppRoutingModule,
+    MatListModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

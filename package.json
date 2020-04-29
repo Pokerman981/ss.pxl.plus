@@ -1,5 +1,5 @@
 {
-  "name": "eco-tracker",
+  "name": "ss.pxl.plus",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -20,9 +20,12 @@
     "@angular/material": "^9.2.1",
     "@angular/platform-browser": "~9.1.3",
     "@angular/platform-browser-dynamic": "~9.1.3",
-    "@angular/router": "~9.1.3",
+    "@angular/router": "^9.1.3",
     "angular-google-charts": "^1.1.3",
     "bootstrap": "^4.4.1",
+    "crypto-js": "^4.0.0",
+    "jwt-decode": "^2.2.0",
+    "ngx-cookie-service": "^3.0.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
@@ -32,9 +35,10 @@
     "@angular/cli": "~9.1.3",
     "@angular/compiler-cli": "~9.1.3",
     "@angular/language-service": "~9.1.3",
-    "@types/node": "^12.11.1",
+    "@types/crypto-js": "^3.1.45",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",

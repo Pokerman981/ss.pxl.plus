@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "EcoTracker": {
+    "ss.pxl.plus": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/EcoTracker",
+            "outputPath": "dist/ss.pxl.plus",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "EcoTracker:build"
+            "browserTarget": "ss.pxl.plus:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "EcoTracker:build:production"
+              "browserTarget": "ss.pxl.plus:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "EcoTracker:build"
+            "browserTarget": "ss.pxl.plus:build"
           }
         },
         "test": {
@@ -113,18 +113,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "EcoTracker:serve"
+            "devServerTarget": "ss.pxl.plus:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "EcoTracker:serve:production"
+              "devServerTarget": "ss.pxl.plus:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "EcoTracker",
+  "defaultProject": "ss.pxl.plus",
   "cli": {
     "analytics": "662df702-a7e3-445e-b693-7d47374a780b"
   }

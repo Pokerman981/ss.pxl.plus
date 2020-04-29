@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  APIURL: 'https://ss.pxl.plus:420/',
+  URL: 'https://ss.pxl.plus/'
 };
 
 /*

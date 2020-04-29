@@ -1,3 +1,6 @@
-<nav class="navbar navbar-light bg-light">
-  <span class="navbar-brand mb-0">EcoTracker</span>
-</nav>
+<mat-toolbar color="primary">
+  <a mat-mini-fab class="headerIcon" (click)="toggleNav()">
+    <mat-icon>reorder</mat-icon>
+  </a>
+  <span *ngIf="username">Welcome, {{username}}</span>
+</mat-toolbar>
