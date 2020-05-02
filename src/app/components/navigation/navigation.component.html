@@ -1,7 +1,9 @@
-  <mat-sidenav [opened]="emitEvent" mode="push">
+ <mat-sidenav [opened]="emitEvent" mode="push">
     <mat-nav-list>
       <mat-action-list>
-        <button mat-list-item><mat-icon matListIcon>home</mat-icon>Home</button>
+        <button (click)="click('home')" mat-list-item><mat-icon matListIcon>home</mat-icon>Home</button>
+        <button (click)="click('serverstatus')" mat-list-item><mat-icon matListIcon>timeline</mat-icon>Server Status</button>
+        <button (click)="click('ecotracker')" mat-list-item><mat-icon matListIcon>attach_money</mat-icon>Eco Tracker</button>
       </mat-action-list>
     </mat-nav-list>
   </mat-sidenav>

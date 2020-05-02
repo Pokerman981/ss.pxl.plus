@@ -5,6 +5,7 @@ import {environment} from '../../../environments/environment';
 import * as crypto from 'crypto-js';
 import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
+import {AuthService} from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   error: null | string;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private cookieService: CookieService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private cookieService: CookieService, private router: Router, private authService: AuthService) {
     this.loginForm = formBuilder.group({
       username: '' ,
       password: '',
@@ -32,20 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   async ngOnInit() {
-    if (this.cookieService.check('token')) {
-      this.router.navigate(['base']).finally(() => {/**/});
 
-      this.http.get(environment.APIURL + 'api/verify', {headers: {token: this.cookieService.get('token')}})
-        .subscribe((value: any) => {
-          if (value.data.valid === true) {
-            console.log('Verified');
-          }
-        },
-          err => {
-          console.log(err);
-          this.router.navigate(['/']).finally(() => {/**/});
-          });
-    }
   }
 
   login() {
@@ -60,15 +48,14 @@ export class LoginComponent implements OnInit {
         password: crypto.SHA256(this.loginForm.get('password').value)
           .toString()})
       .subscribe((value: {token}) => {
-        const date = new Date();
-        date.setHours(date.getHours() + 1);
+        console.log('Set Cookie');
 
-        this.cookieService.set('token', value.token, date, '/', 'localhost', false, 'Strict');
-      },
+        this.cookieService.set('token', value.token, 1, '/', 'localhost', false);
+        this.router.navigate(['/base']).finally(() => {/**/});
+        },
         err => {
           this.error = `Error ${err.status}: ${err.error}`;
         });
-    this.loginForm.get('password').reset(true);
   }
 
   isValidForm(): boolean {

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
+import {AuthService} from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-base',
@@ -10,18 +11,20 @@ import {Router} from '@angular/router';
 export class BaseComponent implements OnInit {
 
 
-  constructor(private cookieService: CookieService, private router: Router) { }
+  constructor(private cookieService: CookieService, private router: Router, private authService: AuthService) { }
 
   toggle;
+  view;
 
   ngOnInit(): void {
-    if (!this.cookieService.check('token')) {
-       this.router.navigate(['base']).finally(() => {/**/});
-    }
   }
 
   getSideNavEvent(event){
     this.toggle = event;
+  }
+
+  navClicked(event) {
+    this.view = event;
   }
 
 }

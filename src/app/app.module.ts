@@ -22,6 +22,9 @@ import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 import {CookieService} from 'ngx-cookie-service';
 import {MatListModule} from '@angular/material/list';
+import { ServerstatusComponent } from './components/base/views/serverstatus/serverstatus.component';
+import { HomeComponent } from './components/base/views/home/home.component';
+import { EcotrackerComponent } from './components/base/views/ecotracker/ecotracker.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import {MatListModule} from '@angular/material/list';
     HeaderComponent,
     LoginComponent,
     NavigationComponent,
-    BaseComponent
+    BaseComponent,
+    ServerstatusComponent,
+    HomeComponent,
+    EcotrackerComponent
   ],
   imports: [
     BrowserModule,
