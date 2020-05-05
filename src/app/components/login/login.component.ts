@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       .subscribe((value: {token}) => {
         console.log('Set Cookie');
 
-        this.cookieService.set('token', value.token, 1, '/', 'localhost', false);
+        this.cookieService.set('token', value.token, 1, '/', '.pxl.plus', true);
         this.router.navigate(['/base']).finally(() => {/**/});
         },
         err => {

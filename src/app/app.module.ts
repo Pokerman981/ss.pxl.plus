@@ -25,6 +25,7 @@ import {MatListModule} from '@angular/material/list';
 import { ServerstatusComponent } from './components/base/views/serverstatus/serverstatus.component';
 import { HomeComponent } from './components/base/views/home/home.component';
 import { EcotrackerComponent } from './components/base/views/ecotracker/ecotracker.component';
+import {GoogleChartsModule} from 'angular-google-charts';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { EcotrackerComponent } from './components/base/views/ecotracker/ecotrack
     MatSidenavModule,
     RouterModule,
     AppRoutingModule,
-    MatListModule
+    MatListModule,
+    GoogleChartsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
