@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import * as crypto from 'crypto-js';
 import {CookieService} from 'ngx-cookie-service';
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       .subscribe((value: {token}) => {
         console.log('Set Cookie');
 
-        this.cookieService.set('token', value.token, 1, '/', '.pxl.plus', true);
+        this.cookieService.set('token', value.token, 1, '/', 'localhost', false);
         this.router.navigate(['/base']).finally(() => {/**/});
         },
         err => {

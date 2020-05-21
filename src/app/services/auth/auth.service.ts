@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
@@ -16,7 +16,6 @@ export class AuthService{
     } else {
       this.router.navigate(['/']).finally(() => { return; });
     }
-
   }
 
   getToken(name) {
@@ -31,8 +30,9 @@ export class AuthService{
     this.router.navigate(['/base']).finally(() => {/**/});
     this.http.get(environment.APIURL + 'api/verify', {headers: {token}})
       .subscribe((value: any) => {
-          if (value.data.valid === true) {
-            //
+          const valid = value.data.valid;
+          if (valid !== true) {
+            throw new Error('Invalid token!');
           }
         },
         err => {
