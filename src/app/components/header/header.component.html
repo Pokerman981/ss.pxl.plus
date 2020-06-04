@@ -1,6 +1,8 @@
-<mat-toolbar color="primary">
-  <a mat-mini-fab class="headerIcon" (click)="toggleNav()">
-    <mat-icon>reorder</mat-icon>
-  </a>
-  <span *ngIf="username">Welcome, {{username}}</span>
-</mat-toolbar>
+<div id="toolbar">
+  <mat-toolbar color="primary">
+    <a mat-mini-fab class="headerIcon" (click)="toggleNav()">
+      <mat-icon>reorder</mat-icon>
+    </a>
+    <span *ngIf="username">Welcome, {{username}}</span>
+  </mat-toolbar>
+</div>

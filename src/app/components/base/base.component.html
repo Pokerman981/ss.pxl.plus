@@ -1,10 +1,10 @@
 <app-header (toggleSideNav)="getSideNavEvent($event)"></app-header>
-<mat-sidenav-container>
-<app-navigation [emitEvent]="toggle" (navClicked)="navClicked($event)"></app-navigation>
-<ng-container [ngSwitch]="view">
-  <app-home *ngSwitchDefault></app-home>
-  <app-home *ngSwitchCase="'home'"></app-home>
-  <app-serverstatus *ngSwitchCase="'serverstatus'"></app-serverstatus>
-  <app-ecotracker *ngSwitchCase="'ecotracker'"></app-ecotracker>
-</ng-container>
-</mat-sidenav-container>
+  <mat-sidenav-container id="mainContent">
+    <app-navigation [emitEvent]="toggle" (navClicked)="navClicked($event)"></app-navigation>
+    <ng-container [ngSwitch]="view">
+      <app-home *ngSwitchDefault></app-home>
+      <app-home *ngSwitchCase="'home'"></app-home>
+      <app-serverstatus *ngSwitchCase="'serverstatus'"></app-serverstatus>
+      <app-ecotracker *ngSwitchCase="'ecotracker'"></app-ecotracker>
+    </ng-container>
+  </mat-sidenav-container>

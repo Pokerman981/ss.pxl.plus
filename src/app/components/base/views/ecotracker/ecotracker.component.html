@@ -1,7 +1,29 @@
 <div style="text-align: center">
-  <div style="display: flex">
-    <div>
-      <google-chart [title]="'People Per City'" [type]="chartType" [columns]="chartColumns" [data]="chartData"></google-chart>
-    </div>
-  </div>
+      <mat-grid-list [cols]="2" rowHeight="1:.5" class="gridList">
+        <div *ngFor="let i1 = index ; let server of googleChartData | async;">
+          <mat-grid-tile [colspan]="2" class="gridItems">
+            <mat-grid-tile-header>{{availableServers[i1] | uppercase}}</mat-grid-tile-header>
+
+            <mat-tab-group mat-align-tabs="center" class="tabGroup">
+              <div *ngFor="let day  of days">
+                <mat-tab *ngIf="day == '1 Day'" [label]="day">
+                  <mat-tab-group mat-align-tabs="center" class="tabGroup" [dynamicHeight]="true">
+                    <div *ngFor="let i2 = index; let name of graphDisplayNames;">
+                      <!--                {{ generateChartData(server,i2, graphNames) }}-->
+
+                      <mat-tab [label]="name">
+                        <ng-template matTabContent>
+                          <google-chart class="googleChart" [data]="makeChart('PieChart', name, server, graphNames[i2])"></google-chart>
+                        </ng-template>
+                      </mat-tab>
+                    </div>
+                  </mat-tab-group>
+                </mat-tab>
+              </div>
+            </mat-tab-group>
+          </mat-grid-tile>
+        </div>
+
+      </mat-grid-list>
 </div>
+

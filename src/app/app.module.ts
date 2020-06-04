@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './components/header/header.component';
-import { LoginComponent } from './components/login/login.component';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HeaderComponent} from './components/header/header.component';
+import {LoginComponent} from './components/login/login.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -15,17 +15,20 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
-import { NavigationComponent } from './components/navigation/navigation.component';
+import {NavigationComponent} from './components/navigation/navigation.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { BaseComponent } from './components/base/base.component';
+import {BaseComponent} from './components/base/base.component';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 import {CookieService} from 'ngx-cookie-service';
 import {MatListModule} from '@angular/material/list';
-import { ServerstatusComponent } from './components/base/views/serverstatus/serverstatus.component';
-import { HomeComponent } from './components/base/views/home/home.component';
-import { EcotrackerComponent } from './components/base/views/ecotracker/ecotracker.component';
-import {GoogleChartsModule} from 'angular-google-charts';
+import {ServerstatusComponent} from './components/base/views/serverstatus/serverstatus.component';
+import {HomeComponent} from './components/base/views/home/home.component';
+import {EcotrackerComponent} from './components/base/views/ecotracker/ecotracker.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {Ng2GoogleChartsModule} from 'ng2-google-charts';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,10 @@ import {GoogleChartsModule} from 'angular-google-charts';
     RouterModule,
     AppRoutingModule,
     MatListModule,
-    GoogleChartsModule
+    MatGridListModule,
+    MatExpansionModule,
+    Ng2GoogleChartsModule,
+    MatTabsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

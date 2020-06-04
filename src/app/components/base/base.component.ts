@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth/auth.service';
@@ -17,6 +17,9 @@ export class BaseComponent implements OnInit {
   view;
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.adjustHeight();
+    }, 50);
   }
 
   getSideNavEvent(event){
@@ -25,6 +28,13 @@ export class BaseComponent implements OnInit {
 
   navClicked(event) {
     this.view = event;
+  }
+
+  @HostListener('window:resize')
+  adjustHeight() {
+    const toolbar = document.getElementById('toolbar').offsetHeight;
+    const windowHeight = window.innerHeight;
+    document.getElementById('mainContent').style.height = (windowHeight - toolbar) + 'px';
   }
 
 }
