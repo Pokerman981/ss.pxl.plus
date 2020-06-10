@@ -12,7 +12,6 @@ export class UtilsService {
     const dateObject = new Date();
     let tempDate = dateObject.getDate();
     let tempMonth = dateObject.getMonth();
-    console.log(dateOffset, tempDate);
 
     if (dateOffset >= tempDate) {
       tempMonth--;

@@ -1,29 +1,42 @@
 <div style="text-align: center">
-      <mat-grid-list [cols]="2" rowHeight="1:.5" class="gridList">
-        <div *ngFor="let i1 = index ; let server of googleChartData | async;">
-          <mat-grid-tile [colspan]="2" class="gridItems">
-            <mat-grid-tile-header>{{availableServers[i1] | uppercase}}</mat-grid-tile-header>
+  <mat-accordion>
 
-            <mat-tab-group mat-align-tabs="center" class="tabGroup">
-              <div *ngFor="let day  of days">
-                <mat-tab *ngIf="day == '1 Day'" [label]="day">
-                  <mat-tab-group mat-align-tabs="center" class="tabGroup" [dynamicHeight]="true">
-                    <div *ngFor="let i2 = index; let name of graphDisplayNames;">
-                      <!--                {{ generateChartData(server,i2, graphNames) }}-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <p>Controls</p>
+      </mat-expansion-panel-header>
 
-                      <mat-tab [label]="name">
-                        <ng-template matTabContent>
-                          <google-chart class="googleChart" [data]="makeChart('PieChart', name, server, graphNames[i2])"></google-chart>
-                        </ng-template>
-                      </mat-tab>
-                    </div>
-                  </mat-tab-group>
-                </mat-tab>
-              </div>
-            </mat-tab-group>
-          </mat-grid-tile>
-        </div>
+<!--      <input matInput [matDatepicker]="picker">-->
+<!--      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--      <mat-datepicker touchUi #picker></mat-datepicker>-->
 
-      </mat-grid-list>
+      <h5>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      </h5>
+      <p>
+        <mat-datepicker hidden touchUi #picker></mat-datepicker>
+        <button mat-raised-button (click)="picker.open()">Select Date</button>
+      </p>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-grid-list [cols]="2" rowHeight="2:1" class="gridList">
+    <div *ngFor="let i1 = index ; let server of googleChartData | async;">
+      <mat-grid-tile [colspan]="2" class="gridItems">
+        <mat-grid-tile-header>{{availableServers[i1] | uppercase}}</mat-grid-tile-header>
+        <mat-tab-group mat-align-tabs="center" class="tabGroup" [dynamicHeight]="true">
+          <div *ngFor="let i2 = index; let name of graphDisplayNames;">
+            <mat-tab [label]="name">
+              <ng-template matTabContent>
+                <google-chart class="googleChart" [data]="makeChart('PieChart', name, server, graphNames[i2])"></google-chart>
+              </ng-template>
+            </mat-tab>
+          </div>
+        </mat-tab-group>
+      </mat-grid-tile>
+    </div>
+  </mat-grid-list>
+
 </div>
 

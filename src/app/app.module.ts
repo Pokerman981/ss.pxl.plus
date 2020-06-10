@@ -29,6 +29,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {Ng2GoogleChartsModule} from 'ng2-google-charts';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatGridListModule,
     MatExpansionModule,
     Ng2GoogleChartsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

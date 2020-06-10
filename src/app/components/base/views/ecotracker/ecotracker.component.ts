@@ -61,27 +61,40 @@ export class EcotrackerComponent implements OnInit {
   constructor(private utils: UtilsService, private http: HttpClient, private auth: AuthService) { }
 
   async ngOnInit() {
+    this.requestFullData(1);
+  }
+
+  requestFullData(dateOffset) {
+    this.requestServersChartData(dateOffset)
+      .then(value => {
+        this.formatData(value)
+          .then(formattedValue => {
+            this.allData = formattedValue;
+            this.googleChartData = of(formattedValue);
+          })
+          .finally(() => {
+            console.log('Finished sanitizing data');
+            return true;
+          });
+      });
+  }
+
+  async requestServersChartData(dateOffset) {
+    const allServersData: any[] = [];
     for (const server of this.availableServers) {
-      await this.getChartData(server)
+      await this.getChartData(server, dateOffset)
         .then(async (value) => {
-          this.allData.push(value);
+          allServersData.push(value);
+          // this.allData.push(value);
         })
         .catch(reason => {
           console.log(reason);
         });
     }
 
-    this.formatData(this.allData)
-      .then(value => {
-        this.allData = value;
-        this.googleChartData = of(value);
-      })
-      .finally(() => {
-
-      });
-
-
+    return allServersData;
   }
+
 
   convertToArrayMap(data, name){
     const extractedData: Map<string, number> = new Map(data[`${name}`]);
@@ -92,22 +105,32 @@ export class EcotrackerComponent implements OnInit {
 
     const sorted = arrayMap.sort((a, b) => b[1] - a[1]);
 
-    return sorted.slice(0, 9);
+    return sorted;
   }
 
   makeChart(type, title, data, name) {
     const arrayMap = this.convertToArrayMap(data, name);
-    if (arrayMap.length > 10) {
-      console.log(arrayMap);
-    }
-
-
     const chart: GoogleChartInterface = {
       chartType: type,
       dataTable: arrayMap,
       firstRowIsData: true,
       options: {
-        title
+        title,
+        sliceVisibilityThreshold: 10 / 500,
+        pieStartAngle: 190,
+        slices: {
+          0: {offset: 0.11},
+          1: {offset: 0.12},
+          2: {offset: 0.13},
+          3: {offset: 0.14},
+          4: {offset: 0.15},
+          5: {offset: 0.16},
+          6: {offset: 0.17},
+          7: {offset: 0.18},
+          8: {offset: 0.19},
+          9: {offset: 0.195},
+          10: {offset: 0.199}
+        }
       }
     };
     return chart;
@@ -158,9 +181,9 @@ export class EcotrackerComponent implements OnInit {
     return formattedCondensedData;
   }
 
-  getChartData(server)  {
+  getChartData(server, dateOffset)  {
     const promise = new Promise((resolve, reject) => {
-      this.http.get(`${environment.APIURL}api/ecotracker`, {headers: {requestedDate: this.utils.getFormattedDate(1), server, token: this.auth.getToken('token')}})
+      this.http.get(`${environment.APIURL}api/ecotracker`, {headers: {requestedDate: this.utils.getFormattedDate(dateOffset), server, token: this.auth.getToken('token')}})
       .pipe(
         map(data => data),
         shareReplay())
@@ -176,4 +199,7 @@ export class EcotrackerComponent implements OnInit {
 
     return promise;
   }
+
+
+
 }
