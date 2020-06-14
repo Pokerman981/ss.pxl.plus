@@ -1,3 +1,91 @@
-<div style="text-align: center">
-  <h2>Server Status</h2>
+<div class="serverStatusBody" id="serverStatusBody">
+<div class="serverLoop">
+  <mat-card id="total">
+    <h2>
+      Pixelmon+ Totals: {{totalsOnline}}/{{totalsMax}}
+    </h2>
+  </mat-card>
+
+</div>
+  <div class="serverLoop" *ngFor="let i = index; let server of observableServerCounts | async;">
+        <mat-card *ngIf="availableServers[i] != 'total'" id="{{availableServers[i]}}">
+          <mat-card-header>
+            <mat-card-title>{{availableServers[i] | uppercase}}</mat-card-title>
+            <mat-card-subtitle>
+              Online: <b>{{server.online == true ? 'Yes' : 'No'}}</b><br>
+              Players Online: <b>{{server.players.online}}/{{server.players.max}}</b>
+            </mat-card-subtitle>
+            <img mat-card-avatar src="https://api.mcsrvstat.us/icon/{{server.hostname}}:{{server.port}}">
+          </mat-card-header>
+          <mat-card-content>
+            <p style="margin-left: .5rem">
+              <b>IP:</b> {{server.ip}}<br>
+              <b>Hostname:</b> {{server.hostname}}<br>
+              <b>Port:</b> {{server.port}}<br>
+              <b>Version:</b> {{server.version}}<br>
+              <b>Protocol:</b> {{server.protocol}}<br><br>
+
+              <mat-accordion>
+                <mat-expansion-panel *ngIf="server.motd != undefined">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      MOTD
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+
+                  <mat-list role="list" style="background-color: #606060;">
+                    <div>
+                      <mat-list-item [innerHTML]="formatMOTD(server.motd.html) | safe: 'html'" style="height: inherit; text-align: center; display: inline-block; padding: .5em" role="listitem">
+
+                      </mat-list-item>
+                    </div>
+                  </mat-list>
+
+                </mat-expansion-panel>
+
+                <mat-expansion-panel *ngIf="server.info != undefined">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      MOTD Hover
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+
+                  <mat-list role="list" style="background-color: #606060;">
+                    <div>
+                      <mat-list-item [innerHTML]="formatMOTD(server.info.html) | safe: 'html'" style="height: inherit; text-align: center; display: inline-block; padding: .5em" role="listitem">
+
+                      </mat-list-item>
+                    </div>
+                  </mat-list>
+
+                </mat-expansion-panel>
+
+                <mat-expansion-panel *ngIf="server.mods != undefined">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Mods
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+
+                  <mat-list role="list">
+                    <div *ngFor="let mod of server.mods.raw | keyvalue">
+                      <span >
+                        <mat-list-item role="listitem">
+                          {{mod.value}}
+                        </mat-list-item>
+                      </span>
+                    </div>
+                  </mat-list>
+
+                </mat-expansion-panel>
+              </mat-accordion>
+
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+<!--            <button mat-button>LIKE</button>-->
+<!--            <button mat-button>SHARE</button>-->
+          </mat-card-actions>
+        </mat-card>
+  </div>
 </div>

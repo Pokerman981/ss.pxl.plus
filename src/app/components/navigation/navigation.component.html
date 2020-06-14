@@ -1,9 +1,10 @@
- <mat-sidenav [opened]="emitEvent" mode="push">
+ <mat-sidenav [opened]="emitEvent" >
     <mat-nav-list>
       <mat-action-list>
         <button (click)="click('home')" mat-list-item><mat-icon matListIcon>home</mat-icon>Home</button>
-        <button (click)="click('serverstatus')" mat-list-item><mat-icon matListIcon>timeline</mat-icon>Server Status</button>
+        <button (click)="click('serverstatus')" mat-list-item><mat-icon matListIcon>autorenew</mat-icon>Server Status</button>
         <button (click)="click('ecotracker')" mat-list-item><mat-icon matListIcon>attach_money</mat-icon>Eco Tracker</button>
+        <button (click)="click('playercounter')" mat-list-item><mat-icon matListIcon>timeline</mat-icon>Player Counter</button>
       </mat-action-list>
     </mat-nav-list>
   </mat-sidenav>

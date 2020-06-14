@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   APIURL: 'https://ss.pxl.plus:420/',
-  URL: 'https://ss.pxl.plus/'
+  URL: 'https://ss.pxl.plus/',
+  domain: 'localhost',
+  secure: false
 };
 
 /*

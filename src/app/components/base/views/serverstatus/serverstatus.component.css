@@ -1,0 +1,13 @@
+mat-card {
+  min-width: 20rem;
+  max-width: 24rem;
+}
+
+.serverStatusBody {
+  margin: 0 auto;
+}
+
+.serverLoop {
+  margin: .5em;
+  /*text-align: center;*/
+}

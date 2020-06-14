@@ -1,5 +1,7 @@
 export const environment = {
   production: true,
   APIURL: 'https://ss.pxl.plus:420/',
-  URL: 'https://ss.pxl.plus/'
+  URL: 'https://ss.pxl.plus/',
+  domain: '.pxl.plus',
+  secure: true
 };

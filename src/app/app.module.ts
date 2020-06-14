@@ -31,6 +31,10 @@ import {Ng2GoogleChartsModule} from 'ng2-google-charts';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {SafePipe} from './pipe/safe.pipe';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
+import {PlayercounterComponent} from './components/base/views/playercounter/playercounter.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     BaseComponent,
     ServerstatusComponent,
     HomeComponent,
-    EcotrackerComponent
+    EcotrackerComponent,
+    SafePipe,
+    PlayercounterComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +72,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     Ng2GoogleChartsModule,
     MatTabsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

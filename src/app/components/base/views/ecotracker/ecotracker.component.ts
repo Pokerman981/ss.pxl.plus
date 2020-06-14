@@ -6,6 +6,7 @@ import {environment} from '../../../../../environments/environment';
 import {AuthService} from '../../../../services/auth/auth.service';
 import {map, shareReplay} from 'rxjs/operators';
 import {of} from 'rxjs';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-ecotracker',
@@ -54,14 +55,26 @@ export class EcotrackerComponent implements OnInit {
     'mostSoldByPlayer'
   ];
 
-
   allData: any[] = [];
   googleChartData: any;
+
+  date = new FormControl(this.dateMinusDay());
+  dateMinusDay(offset?: number | null) {
+    if (isNaN(offset)) { offset = 1; }
+    const current = new Date();
+
+    const dayInMS = offset * 86400000;
+    return new Date(current.getTime() - (dayInMS));
+  }
+
+
 
   constructor(private utils: UtilsService, private http: HttpClient, private auth: AuthService) { }
 
   async ngOnInit() {
-    this.requestFullData(1);
+    setTimeout(() => {
+      this.requestFullData(this.utils.getFormattedDateWithObj(new Date(this.date.value)));
+    }, 50);
   }
 
   requestFullData(dateOffset) {
@@ -73,7 +86,6 @@ export class EcotrackerComponent implements OnInit {
             this.googleChartData = of(formattedValue);
           })
           .finally(() => {
-            console.log('Finished sanitizing data');
             return true;
           });
       });
@@ -103,9 +115,7 @@ export class EcotrackerComponent implements OnInit {
       arrayMap.push([key, value]);
     });
 
-    const sorted = arrayMap.sort((a, b) => b[1] - a[1]);
-
-    return sorted;
+    return arrayMap.sort((a, b) => b[1] - a[1]);
   }
 
   makeChart(type, title, data, name) {
@@ -182,12 +192,12 @@ export class EcotrackerComponent implements OnInit {
   }
 
   getChartData(server, dateOffset)  {
-    const promise = new Promise((resolve, reject) => {
-      this.http.get(`${environment.APIURL}api/ecotracker`, {headers: {requestedDate: this.utils.getFormattedDate(dateOffset), server, token: this.auth.getToken('token')}})
-      .pipe(
-        map(data => data),
-        shareReplay())
-      .toPromise()
+    return new Promise((resolve, reject) => {
+      this.http.get(`${environment.APIURL}api/ecotracker`, {headers: {requestedDate: dateOffset, server, token: this.auth.getToken('token')}})
+        .pipe(
+          map(data => data),
+          shareReplay())
+        .toPromise()
         .then(value => {
           resolve(value);
         })
@@ -196,10 +206,10 @@ export class EcotrackerComponent implements OnInit {
           reject(reason);
         });
     });
-
-    return promise;
   }
 
-
+  dateChanged(event) {
+    this.requestFullData(this.utils.getFormattedDateWithObj(new Date(event.value)));
+  }
 
 }

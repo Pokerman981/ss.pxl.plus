@@ -19,9 +19,5 @@ export class NavigationComponent implements OnInit {
 
   click(location) {
     this.navClicked.emit(location);
-
-    // this.router.navigate([], {queryParams: {
-    //   view: location
-    //   }}).finally(() => {});
   }
 }

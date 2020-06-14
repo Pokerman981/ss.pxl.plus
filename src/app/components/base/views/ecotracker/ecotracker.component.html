@@ -1,42 +1,59 @@
 <div style="text-align: center">
-  <mat-accordion>
+  <mat-accordion multi>
 
     <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <p>Controls</p>
-      </mat-expansion-panel-header>
+      <mat-expansion-panel-header style="margin-top: 1rem; margin-bottom: .5rem" >
 
-<!--      <input matInput [matDatepicker]="picker">-->
+        <mat-panel-title>
+          <mat-form-field >
+            <input  matInput [matDatepicker]="picker" disabled
+                    placeholder="Selected date" [formControl]="date" (dateChange)="dateChanged($event)">
+            <mat-datepicker disabled="false" #picker touchUi ></mat-datepicker>
+          </mat-form-field>
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+      <div>
+        <button style="margin: .5rem" mat-raised-button (click)="picker.open()">Select a date</button>
+        <button style="margin: .5rem" mat-raised-button disabled>Change Chart</button>
+      </div>
+
+
+      <!--      <input matInput [matDatepicker]="picker">-->
 <!--      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
 <!--      <mat-datepicker touchUi #picker></mat-datepicker>-->
 
-      <h5>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-      </h5>
-      <p>
-        <mat-datepicker hidden touchUi #picker></mat-datepicker>
-        <button mat-raised-button (click)="picker.open()">Select Date</button>
-      </p>
+    </mat-expansion-panel>
 
+    <mat-expansion-panel expanded="true" >
+      <mat-expansion-panel-header style="margin-top: 1rem; margin-bottom: .5rem" >
+
+        <mat-panel-title>
+          Graphs
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+
+      <mat-grid-list [cols]="2" rowHeight="2:1" class="gridList">
+        <div *ngFor="let i1 = index ; let server of googleChartData | async;">
+          <mat-grid-tile [colspan]="2" class="gridItems">
+            <mat-grid-tile-header>{{availableServers[i1] | uppercase}}</mat-grid-tile-header>
+            <mat-tab-group mat-align-tabs="center" class="tabGroup" [dynamicHeight]="true">
+              <div *ngFor="let i2 = index; let name of graphDisplayNames;">
+                <mat-tab [label]="name">
+                  <ng-template matTabContent>
+                    <google-chart id="chart-{{server}}" class="googleChart" [data]="makeChart('PieChart', name, server, graphNames[i2])"></google-chart>
+                  </ng-template>
+                </mat-tab>
+              </div>
+            </mat-tab-group>
+          </mat-grid-tile>
+        </div>
+      </mat-grid-list>
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-grid-list [cols]="2" rowHeight="2:1" class="gridList">
-    <div *ngFor="let i1 = index ; let server of googleChartData | async;">
-      <mat-grid-tile [colspan]="2" class="gridItems">
-        <mat-grid-tile-header>{{availableServers[i1] | uppercase}}</mat-grid-tile-header>
-        <mat-tab-group mat-align-tabs="center" class="tabGroup" [dynamicHeight]="true">
-          <div *ngFor="let i2 = index; let name of graphDisplayNames;">
-            <mat-tab [label]="name">
-              <ng-template matTabContent>
-                <google-chart class="googleChart" [data]="makeChart('PieChart', name, server, graphNames[i2])"></google-chart>
-              </ng-template>
-            </mat-tab>
-          </div>
-        </mat-tab-group>
-      </mat-grid-tile>
-    </div>
-  </mat-grid-list>
+
 
 </div>
 
