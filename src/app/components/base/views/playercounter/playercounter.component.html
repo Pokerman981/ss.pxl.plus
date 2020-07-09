@@ -1,1 +1,51 @@
-<p>playercounter works!</p>
+<div style="text-align: center">
+  <mat-accordion multi>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header style="margin-top: 1rem; margin-bottom: .5rem" >
+
+        <mat-panel-title>
+          <mat-form-field class="formField">
+            <input (dateChange)="getChart()" matInput [matDatepicker]="pickerLower" disabled
+                    placeholder="Selected Lower Date" [formControl]="dateLower">
+            <mat-datepicker disabled="false" #pickerLower touchUi ></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="formField">
+            <input (dateChange)="getChart()" matInput [matDatepicker]="pickerHigher" disabled
+                    placeholder="Selected Higher Date" [formControl]="dateHigher">
+            <mat-datepicker disabled="false" #pickerHigher touchUi ></mat-datepicker>
+          </mat-form-field>
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+      <div >
+        <button class="button" mat-raised-button (click)="pickerLower.open()">Select a lower date</button>
+        <button class="button" mat-raised-button (click)="pickerHigher.open()">Select a higher date</button><br>
+
+      </div>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel expanded="true" >
+      <mat-expansion-panel-header style="margin-top: 1rem; margin-bottom: .5rem" >
+
+        <mat-panel-title>
+          Player Counter
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+
+      <div id="playercounter" *ngIf="(observChart) | async as observe">
+<!--        <google-chart id="googlechart" [data]="getMostRecent()"></google-chart>-->
+        <google-chart></google-chart>
+      </div>
+
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
+
+</div>
+

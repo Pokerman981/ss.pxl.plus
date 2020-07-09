@@ -7,39 +7,6 @@ export class UtilsService {
 
   constructor() { }
 
-  public getFormattedDate(dateOffset) {
-    // current date
-    const dateObject = new Date();
-    let tempDate = dateObject.getDate();
-    let tempMonth = dateObject.getMonth();
-
-    if (dateOffset >= tempDate) {
-      tempMonth--;
-      tempDate = dateOffset - daysInMonth(tempMonth, dateObject.getFullYear());
-    } else {
-      tempDate -= dateOffset;
-    }
-
-    // adjust 0 before single digit date
-    const date = (('0' + (tempDate)).slice(-2));
-    // current month
-    const month = ('0' + (tempMonth + 1)).slice(-2);
-    // current year
-    const year = dateObject.getFullYear();
-    // current hours
-    const hours = dateObject.getHours();
-    // current minutes
-    const minutes = dateObject.getMinutes();
-    // current seconds
-    const seconds = dateObject.getSeconds();
-
-    function daysInMonth(m, y) {
-      return new Date(y, m, 0).getDate();
-    }
-
-    return `${year}-${month}-${date}`;
-  }
-
   public getFormattedDateWithObj(dateObject: Date) {
     // current date
 
@@ -59,4 +26,21 @@ export class UtilsService {
     return `${year}-${month}-${date}`;
   }
 
+  public getTimeStamp(date) {
+    const finalDate =  date.getUTCFullYear() + '-' +
+      ('00' + (date.getUTCMonth() + 1)).slice(-2) + '-' +
+      ('00' + date.getUTCDate()).slice(-2) + ' ' +
+      ('00' + date.getUTCHours()).slice(-2) + ':' +
+      ('00' + date.getUTCMinutes()).slice(-2) + ':' +
+      ('00' + date.getUTCSeconds()).slice(-2);
+    return finalDate;
+  }
+
+  public dateMinusDayOrNum(offset?: number | null) {
+    if (isNaN(offset)) { offset = 1; }
+    const current = new Date();
+
+    const dayInMS = offset * 86400000;
+    return new Date(current.getTime() - (Math.abs(dayInMS)));
+  }
 }

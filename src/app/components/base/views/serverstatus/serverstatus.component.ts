@@ -67,7 +67,6 @@ export class ServerstatusComponent implements OnInit {
         });
     }
 
-    console.log(serverCounts);
     return of(serverCounts);
   }
 

@@ -58,14 +58,7 @@ export class EcotrackerComponent implements OnInit {
   allData: any[] = [];
   googleChartData: any;
 
-  date = new FormControl(this.dateMinusDay());
-  dateMinusDay(offset?: number | null) {
-    if (isNaN(offset)) { offset = 1; }
-    const current = new Date();
-
-    const dayInMS = offset * 86400000;
-    return new Date(current.getTime() - (dayInMS));
-  }
+  date = new FormControl(this.utils.dateMinusDayOrNum());
 
 
 
