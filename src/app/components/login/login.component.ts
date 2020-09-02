@@ -1,3 +1,14 @@
+/*
+ * Copyright (c) 2020. Troy Gidney
+ * All rights reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ *
+ * File Last Modified: 6/12/20, 4:40 PM
+ * File: login.component.ts
+ * Project: ss.pxl.plus
+ */
+
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';

@@ -1,3 +1,14 @@
+/*
+ * Copyright (c) 2020. Troy Gidney
+ * All rights reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ *
+ * File Last Modified: 4/26/20, 12:18 AM
+ * File: protractor.conf.js
+ * Project: ss.pxl.plus
+ */
+
 // @ts-check
 // Protractor configuration file, see link for more information
 // https://github.com/angular/protractor/blob/master/lib/config.ts

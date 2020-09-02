@@ -1,3 +1,14 @@
+/*
+ * Copyright (c) 2020. Troy Gidney
+ * All rights reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ *
+ * File Last Modified: 4/28/20, 10:45 PM
+ * File: login.component.css
+ * Project: ss.pxl.plus
+ */
+
 :host {
   display: flex;
   justify-content: center;

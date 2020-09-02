@@ -1,5 +1,15 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MatSidenav} from '@angular/material/sidenav';
+/*
+ * Copyright (c) 2020. Troy Gidney
+ * All rights reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ *
+ * File Last Modified: 6/12/20, 12:35 AM
+ * File: header.component.ts
+ * Project: ss.pxl.plus
+ */
+
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import * as jwt_decode from 'jwt-decode';
 

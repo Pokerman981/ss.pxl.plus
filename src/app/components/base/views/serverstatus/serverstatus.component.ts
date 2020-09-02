@@ -1,3 +1,14 @@
+/*
+ * Copyright (c) 2020. Troy Gidney
+ * All rights reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ *
+ * File Last Modified: 6/15/20, 5:36 AM
+ * File: serverstatus.component.ts
+ * Project: ss.pxl.plus
+ */
+
 import {Component, HostListener, OnInit} from '@angular/core';
 import {of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';

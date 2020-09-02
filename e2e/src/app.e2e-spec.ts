@@ -1,5 +1,16 @@
-import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+/*
+ * Copyright (c) 2020. Troy Gidney
+ * All rights reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ *
+ * File Last Modified: 4/26/20, 12:18 AM
+ * File: app.e2e-spec.ts
+ * Project: ss.pxl.plus
+ */
+
+import {AppPage} from './app.po';
+import {browser, logging} from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;

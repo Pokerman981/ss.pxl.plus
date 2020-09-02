@@ -1,3 +1,14 @@
+/*
+ * Copyright (c) 2020. Troy Gidney
+ * All rights reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ *
+ * File Last Modified: 6/15/20, 5:34 AM
+ * File: ecotracker.component.ts
+ * Project: ss.pxl.plus
+ */
+
 import {Component, OnInit} from '@angular/core';
 import {GoogleChartInterface} from 'ng2-google-charts';
 import {UtilsService} from '../../../../services/utils/utils.service';

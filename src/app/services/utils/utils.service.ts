@@ -1,3 +1,14 @@
+/*
+ * Copyright (c) 2020. Troy Gidney
+ * All rights reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ *
+ * File Last Modified: 6/15/20, 5:49 AM
+ * File: utils.service.ts
+ * Project: ss.pxl.plus
+ */
+
 import {Injectable} from '@angular/core';
 
 @Injectable({

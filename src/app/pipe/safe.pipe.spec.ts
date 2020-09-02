@@ -1,11 +1,12 @@
 /*
- * Copyright (C) 2020-2020 KevTech  - All Rights Reserved
- *  Unauthorized copying of this file, via any medium is strictly prohibited
- *  Proprietary and confidential
- *  Written by KevTech <admin@kevtech.ca>, 2020-03-13, 2:05 p.m.
+ * Copyright (c) 2020. Troy Gidney
+ * All rights reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
  *
- *  File: safe.pipe.spec.ts
- *  Project: FarmingSmarterPWA
+ * File Last Modified: 3/13/20, 10:52 PM
+ * File: safe.pipe.spec.ts
+ * Project: ss.pxl.plus
  */
 
 /**

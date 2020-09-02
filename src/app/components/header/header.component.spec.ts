@@ -1,6 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+/*
+ * Copyright (c) 2020. Troy Gidney
+ * All rights reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ *
+ * File Last Modified: 4/26/20, 12:18 AM
+ * File: header.component.spec.ts
+ * Project: ss.pxl.plus
+ */
 
-import { HeaderComponent } from './header.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+
+import {HeaderComponent} from './header.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;

@@ -1,3 +1,14 @@
+/*
+ * Copyright (c) 2020. Troy Gidney
+ * All rights reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ *
+ * File Last Modified: 7/8/20, 10:29 PM
+ * File: playercounter.component.ts
+ * Project: ss.pxl.plus
+ */
+
 import {Component, ElementRef, HostListener, Input, OnInit} from '@angular/core';
 import {UtilsService} from '../../../../services/utils/utils.service';
 import {HttpClient} from '@angular/common/http';
